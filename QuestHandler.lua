@@ -146,7 +146,7 @@ function AAPClassic.QH.UpdateMapIdHorde()
 	end
 	--- 25 Southern Barrens ---
 	if (IsQuestFlaggedCompleted(6381) and not IsQuestFlaggedCompleted(5881)) then
-		AAPClassic.QH.ZoneNr = "23-25StonetalonMountains"
+		AAPClassic.QH.ZoneNr = "25-SouthernBarrens"
 	end
 	--- 25-26 Thousand Needles ---
 	if (IsQuestFlaggedCompleted(5881) and not IsQuestFlaggedCompleted(913)) then
