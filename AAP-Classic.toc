@@ -1,0 +1,33 @@
+## Interface: 11302
+
+## Title: Azeroth Auto Pilot <Classic> 1-60
+## Notes: AAP Classic
+## Author: Zyrrael
+## Version: 0.12
+## SavedVariables: AAPC1, AAPC2, AAPC3, AAPCQuestNames, AAPC_HoldZoneVar
+lib\LibStub\LibStub.lua
+lib\CallbackHandler-1.0\CallbackHandler-1.0.xml
+lib\HereBeDragons\HereBeDragons-2.0.lua
+lib\HereBeDragons\HereBeDragons-Pins-2.0.lua
+Core.lua
+Arrow.lua
+OptionsPanel.lua
+QuestList.lua
+QuestHandler.lua
+QuestFunctions.lua
+QuestListFunctions.lua
+DBfunctions.lua
+MapFunctions.lua
+ZoneOrders.lua
+A1-30.lua
+A30-60.lua
+H1-30.lua
+H30-60.lua
+db\items.lua
+db\objects.lua
+db\quests.lua
+db\units.lua
+db\unitsNames.lua
+db\itemsNames.lua
+db\questsNames.lua
+db\objectsNames.lua

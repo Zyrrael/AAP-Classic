@@ -1,0 +1,8 @@
+Changes since tag 2.01-release
+
+commit 6b0e857506f78e24184cdbf61e4c0ef3f66401e6
+Author: Hendrik Leppkes <h.leppkes@gmail.com>
+Date:   Sat Mar 16 12:40:36 2019 +0100
+
+    Fill in the map list by iterating over all known maps, in addition to processing the child tree
+

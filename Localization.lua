@@ -1,0 +1,1 @@
+﻿AAPClassic.Locale = {}
