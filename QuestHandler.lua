@@ -338,7 +338,7 @@ function AAPClassic.QH.UpdateMapIdAlly()
 		AAPClassic.QH.ZoneNr = "20-21Darkshore"
 	end
 	--- 21-22 Ashenvale and Stonetalon ---
-	if (IsQuestFlaggedCompleted(967) and not IsQuestFlaggedCompleted(1056)) then
+	if (IsQuestFlaggedCompleted(967) and (not IsQuestFlaggedCompleted(1056) and not IsQuestFlaggedCompleted(1071))) then
 		AAPClassic.QH.ZoneNr = "21-22AshenvaleStonetalon"
 	end
 	--- 22-24 Darkshore ---
