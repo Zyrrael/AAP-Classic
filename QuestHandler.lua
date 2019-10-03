@@ -46,14 +46,14 @@ function AAPClassic.QH.UpdateMapIdHorde()
 		AAPClassic.RemoveIcons()
 		AAPClassic.QuestList = nil
 		AAPClassic.QuestList = {}
-		if (AAPClassic.QuestHelperEnable == "on") then	
+		if (AAPClassic.QuestHelperEnable == "on") then
 			AAPClassic.QH.ZoneNr = "QuestHelper"
 		end
 		AAPClassic.QH.UpdateQuestList()
 	end
-	
+
 	---- test
-	if (AAPClassic.QuestHelperEnable == "on") then	
+	if (AAPClassic.QuestHelperEnable == "on") then
 		AAPClassic.QH.ZoneNr = "QuestHelper"
 	end
 
@@ -106,8 +106,8 @@ function AAPClassic.QH.UpdateMapIdHorde()
 		AAPClassic.QH.ZoneNr = "1-12OrcTroll-Warlock"
 	end
 ---------------------------------- Orc & Troll Ends ---------------------
-	
-	
+
+
 
 
 	--- 12-15 The Barrens ---
@@ -181,7 +181,7 @@ function AAPClassic.QH.UpdateMapIdHorde()
 		AAPClassic.QH.ZoneNr = "37-40"
 	end
 
-	if (AAPClassic.QuestHelperEnable == "on") then	
+	if (AAPClassic.QuestHelperEnable == "on") then
 		AAPClassic.QH.ZoneNr = "QuestHelper"
 	end
 	if (OldMapID ~= AAPClassic.QH.ZoneNr) then
@@ -192,7 +192,7 @@ function AAPClassic.QH.UpdateMapIdHorde()
 		if (not AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]) then
 			AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = 1
 		end
-		if (AAPClassic.QuestHelperEnable == "on") then	
+		if (AAPClassic.QuestHelperEnable == "on") then
 			AAPClassic.QH.ZoneNr = "QuestHelper"
 		end
 	end
@@ -217,9 +217,9 @@ function AAPClassic.QH.UpdateMapIdAlly()
 	AAPClassic.OldZoneId = AAPClassic.QH.ZoneNr
 	AAPClassic.QH.ZoneNr = AAPClassic.QH.ZoneNr
 
-	
+
 	---- test
-	if (AAPClassic.QuestHelperEnable == "on") then	
+	if (AAPClassic.QuestHelperEnable == "on") then
 		AAPClassic.QH.ZoneNr = "QuestHelper"
 	end
 
@@ -237,7 +237,7 @@ function AAPClassic.QH.UpdateMapIdAlly()
 	end
 ---------------------------------- NightElf Ends ---------------------
 
-	
+
 ---------------------------------- Dwarf and Gnome Starts ---------------------
 	if (not IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 1) then
 		AAPClassic.QH.ZoneNr = "1-6DwarfGnome-Warrior"
@@ -306,7 +306,7 @@ function AAPClassic.QH.UpdateMapIdAlly()
 		AAPClassic.QH.ZoneNr = "12-17Darkshore"
 	end
 	--- 17 NightElf - Darkshore to Loch Modan Run ---
-	if (not IsQuestFlaggedCompleted(307) and AAPClassic.QuestList[307] and IsQuestFlaggedCompleted(1138) and IsQuestFlaggedCompleted(4727) and IsQuestFlaggedCompleted(2139) and IsQuestFlaggedCompleted(4763) and AAPClassic.Race == "NightElf") then
+	if (not IsQuestFlaggedCompleted(307) and not AAPClassic.QuestList[307] and IsQuestFlaggedCompleted(1138) and IsQuestFlaggedCompleted(4727) and IsQuestFlaggedCompleted(2139) and IsQuestFlaggedCompleted(4763) and AAPClassic.Race == "NightElf") then
 		AAPClassic.QH.ZoneNr = "17-NightElf-WetlandsRun"
 	end
 	--- 17-18 NightElf - Loch Modan ---
@@ -338,7 +338,7 @@ function AAPClassic.QH.UpdateMapIdAlly()
 		AAPClassic.QH.ZoneNr = "20-21Darkshore"
 	end
 	--- 21-22 Ashenvale and Stonetalon ---
-	if (IsQuestFlaggedCompleted(967) and not IsQuestFlaggedCompleted(1056)) then
+	if (IsQuestFlaggedCompleted(967) and (not IsQuestFlaggedCompleted(1056) and not IsQuestFlaggedCompleted(1071))) then
 		AAPClassic.QH.ZoneNr = "21-22AshenvaleStonetalon"
 	end
 	--- 22-24 Darkshore ---
@@ -409,9 +409,9 @@ function AAPClassic.QH.UpdateMapIdAlly()
 	if (IsQuestFlaggedCompleted(1115)) then
 		AAPClassic.QH.ZoneNr = "39-40StranglethornVale"
 	end
-	
-	
-	
+
+
+
 
 	if (AAPClassic.ExploreEnable == "on") then
 		if (AAPClassic.Race == "Human") then
@@ -421,7 +421,7 @@ function AAPClassic.QH.UpdateMapIdAlly()
 			AAPClassic.QH.ZoneNr = "1-5Explorer2"
 		end
 	end
-	if (AAPClassic.QuestHelperEnable == "on") then	
+	if (AAPClassic.QuestHelperEnable == "on") then
 		AAPClassic.QH.ZoneNr = "QuestHelper"
 	end
 	if (OldMapID ~= AAPClassic.QH.ZoneNr) then
@@ -432,7 +432,7 @@ function AAPClassic.QH.UpdateMapIdAlly()
 		if (not AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]) then
 			AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = 1
 		end
-		if (AAPClassic.QuestHelperEnable == "on") then	
+		if (AAPClassic.QuestHelperEnable == "on") then
 			AAPClassic.QH.ZoneNr = "QuestHelper"
 		end
 	end
@@ -479,7 +479,7 @@ function AAPClassic.QH.REprintzQuestList()
 						end
 					end
 				end
-				
+
 			end
 		end
 		i = i + 1
@@ -569,7 +569,7 @@ function AAPClassic.QH.FunctionLoop()
 		elseif (AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]["UpdMapID"]) then
 			AAPClassic.QH.BookingList.UpdateMapId = 1
 		end
-		
+
 	end
 end
 function AAPClassic.QH.QHQueFunction()
@@ -904,7 +904,7 @@ function AAPClassic.QH.UpdateQuestList()
 							end
 							AAPClassic.ShowedDB[TQid][h] = nil
 						end
-						
+
 						AAPClassic.QH.FuncLoopNumber = 1
 					end
 				end
@@ -968,9 +968,9 @@ function AAPClassic.QH.UpdateQuestList2()
 						AAPClassic.QuestList[TQid]["Objectives"][h]["isComplete"] = finished
 					elseif (AAPClassic.QuestList[TQid]["Objectives"][h]["isComplete"] ~= finished) then
 						AAPClassic.QuestList[TQid]["Objectives"][h]["isComplete"] = finished
-						
+
 						--AAPClassic.ShowedDB[TQid][h]
-						
+
 						AAPClassic.QH.FuncLoopNumber = 1
 					end
 				end
@@ -1080,7 +1080,7 @@ function AAPClassic.CheckNamePlate()
 				AAP_frame.AAPIcon:Hide()
 			end
 		end
-		
+
 	--	if (AAP_frame:GetName() and AAP_frame:GetName():find("NamePlate%d")) then
 	--		local loweredd = strlower(AAP_frame:GetName())
 	--		local zemobid = AAPClassic.CheckNamePlates[loweredd]
@@ -1181,7 +1181,7 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 			--print("-------------------")
 			AAPClassic.QH.BookingList.UpdateQuestList = 1
 		end
-		
+
 	elseif (event=="PLAYER_TARGET_CHANGED") then
 		if (AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"] and AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]) then
 			local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
@@ -1312,7 +1312,7 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 			--print("AAP - QUEST_COMPLETE - NrChoices: "..GetNumQuestChoices())
 			for h=1, GetNumQuestChoices() do
 				local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount,
-				itemEquipLoc, itemIcon, itemSellPrice, itemClassID, itemSubClassID, bindType, expacID, itemSetID, 
+				itemEquipLoc, itemIcon, itemSellPrice, itemClassID, itemSubClassID, bindType, expacID, itemSetID,
 				isCraftingReagent = GetItemInfo(GetQuestItemLink("choice", h))
 				local ilvl = GetDetailedItemLevelInfo(GetQuestItemLink("choice", h))
 				--print("AAP ("..h..") - Item: "..itemLink.." ilvl:"..ilvl)
@@ -1339,7 +1339,7 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 			if (lastAvailableQuest > numAvailableQuests) then
 				lastAvailableQuest = 1;
-			end    
+			end
 			for i = lastAvailableQuest, numAvailableQuests do
 				lastAvailableQuest = i;
 				if (not IsControlKeyDown()) then
