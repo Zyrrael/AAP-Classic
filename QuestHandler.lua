@@ -18,7 +18,9 @@ local nr = 0
 	end
 end
 function AAPClassic.QH.UpdateMapId()
-	if (AAPClassic.Faction == "Horde") then
+        if (AAPC1[AAPClassic.Realm][AAPClassic.Name]["setzone"]) then
+            AAPClassic.QH.ZoneNr=AAPC1[AAPClassic.Realm][AAPClassic.Name]["setzone"]
+        elseif (AAPClassic.Faction == "Horde") then
 		AAPClassic.QH.UpdateMapIdHorde()
 	else
 		AAPClassic.QH.UpdateMapIdAlly()
@@ -567,6 +569,11 @@ function AAPClassic.QH.FunctionLoop()
 		elseif (AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]["Grind"]) then
 			AAPClassic.QH.BookingList.Grind = 1
 		elseif (AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]["UpdMapID"]) then
+                        if ( AAPC1[AAPClassic.Realm][AAPClassic.Name]["setzone"] ) then
+                            print("Reached the end of manually configured zone: " .. AAPC1[AAPClassic.Realm][AAPClassic.Name]["setzone"])
+                            print("Resetting to default zone detection")
+                            AAPC1[AAPClassic.Realm][AAPClassic.Name]["setzone"]=nil
+                        end
 			AAPClassic.QH.BookingList.UpdateMapId = 1
 		end
 		
@@ -1093,6 +1100,16 @@ function AAPClassic.CheckNamePlate()
 	--	end
 	end
 end
+
+local function IsAutocompleteOn() 
+    local noauto = AAPC1[AAPClassic.Realm][AAPClassic.Name]["noauto"]
+    if ( not noauto and not IsControlKeyDown() ) then
+        return true
+    else 
+        return false
+    end
+end
+
 AAPClassic.QH.LoopBooking = CreateFrame("frame")
 AAPClassic.QH.LoopBooking:SetScript("OnUpdate", AAPClassic.QH.QHQueFunction)
 
@@ -1140,10 +1157,10 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 		else
 			return
 		end
-		if (Step and Step["GetFP"] and not IsControlKeyDown()) then
+		if (Step and Step["GetFP"] and IsAutocompleteOn()) then
 			AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 			AAPClassic.QH.FuncLoopNumber = 1
-		elseif (Step and Step["UseFlightPath"] and not IsControlKeyDown()) then
+		elseif (Step and Step["UseFlightPath"] and IsAutocompleteOn()) then
 			AAPClassic.QH.BookingList.UseTaxiFunc = 1
 		end
 	elseif (event=="ZONE_CHANGED") then
@@ -1267,7 +1284,7 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 				return
 			end
 		end
-		if (IsControlKeyDown()) then
+		if (not IsAutocompleteOn()) then
 			return
 		end
 		local ActiveQuests = {GetGossipActiveQuests()}
@@ -1275,14 +1292,14 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 		local CLi
 		local NumAvailableQuests = GetNumGossipAvailableQuests()
 		local AvailableQuests = {GetGossipAvailableQuests()}
-		if (ActiveQuests and not IsControlKeyDown()) then
+		if (ActiveQuests and IsAutocompleteOn()) then
 			for CLi = 1, ActiveQNr do
 				if (ActiveQuests[(((CLi-1) * 6)+4)] == true) then
 					SelectGossipActiveQuest(CLi)
 				end
 			end
 		end
-		if (NumAvailableQuests > 0 and not IsControlKeyDown()) then
+		if (NumAvailableQuests > 0 and IsAutocompleteOn()) then
 			SelectGossipAvailableQuest(1)
 		end
 		local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
@@ -1291,21 +1308,21 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 			Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
 		end
 		-- Auto Gossip:
-		if (Step and Step["Gossip"] and not IsControlKeyDown()) then
+		if (Step and Step["Gossip"] and IsAutocompleteOn()) then
 			SelectGossipOption(1)
 		end
 	elseif (event=="QUEST_DETAIL") then
-		if (IsControlKeyDown()) then
+		if (not IsAutocompleteOn()) then
 			return
 		end
 		AAPClassic.QH.BookingList.AcceptQuest = 1
 	elseif (event=="QUEST_PROGRESS") then
-		if (IsControlKeyDown()) then
+		if (not IsAutocompleteOn()) then
 			return
 		end
 		AAPClassic.QH.BookingList.CompleteQuest = 1
 	elseif (event=="QUEST_COMPLETE") then
-		if (IsControlKeyDown()) then
+		if (not IsAutocompleteOn()) then
 			return
 		end
 		if (GetNumQuestChoices() > 1) then
@@ -1321,7 +1338,7 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 			AAPClassic.QH.BookingList.GetQuestReward = 1
 		end
 	elseif (event=="QUEST_GREETING") then
-		if (IsControlKeyDown()) then
+		if (not IsAutocompleteOn()) then
 			return
 		end
 		local numAvailableQuests = 0;
@@ -1342,7 +1359,7 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end    
 			for i = lastAvailableQuest, numAvailableQuests do
 				lastAvailableQuest = i;
-				if (not IsControlKeyDown()) then
+				if (IsAutocompleteOn()) then
 					SelectAvailableQuest(i);
 				end
 			end
