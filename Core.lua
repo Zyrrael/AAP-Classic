@@ -61,7 +61,12 @@ function AAPClassic.getContinent()
     end
 end
 local function AAP_SlashCmd(AAP_index)
-	if (AAP_index == "reset") then
+	local SkipStep = string.match(AAP_index, 'set:$d+')
+	if (SkipStep) then
+		print("AAP: Setting Step")
+		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = SkipStep
+		AAPClassic.QH.FuncLoopNumber = 1
+	elseif (AAP_index == "reset") then
 		print("AAP: Resetting Zone.")
 		local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
 		local Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
