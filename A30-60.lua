@@ -3063,7 +3063,7 @@ AAPClassic.PathA2 = {
 			["Zone"] = "33 (Stranglethorn Vale)",
 		}, -- [4]
 		{
-			["ExtraLine"] = "He patrols",
+			["ExtraLine"] = "Thorsen patrol starts at Camp. He must survive!",
 			["TT"] = {
 				["y"] = -11465.7,
 				["x"] = -292.5,
