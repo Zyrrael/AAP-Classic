@@ -57,11 +57,13 @@ AAPClassic.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
 	print("AAP - Skipped Waypoint")
 	AAPClassic.QH.FuncLoopNumber = 1
 end)
-AAPClassic.ArrowFrame.Button:SetBackdrop( { 
+
+--[[AAPClassic.ArrowFrame.Button:SetBackdrop( { 
 	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", 
 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 });
+]]
 AAPClassic.ArrowFrame.Fontstring = AAPClassic.ArrowFrame:CreateFontString("AAPClassic_ArrowFrame_Fontstring ","ARTWORK", "ChatFontNormal")
 AAPClassic.ArrowFrame.Fontstring:SetParent(AAPClassic.ArrowFrame.Button)
 AAPClassic.ArrowFrame.Fontstring:SetPoint("CENTER", AAPClassic.ArrowFrame.Button, "CENTER", 0, 0)
