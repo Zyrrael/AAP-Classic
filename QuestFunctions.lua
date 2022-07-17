@@ -28,14 +28,14 @@ function AAPClassic.QF.PickUp()
 	for h=1, getn(IdList) do
 		local theqid = IdList[h]
 		Total = Total + 1
-		if (not AAPClassic.QuestList[theqid] and IsQuestFlaggedCompleted(theqid) == false) then
+		if (not AAPClassic.QuestList[theqid] and C_QuestLog.IsQuestFlaggedCompleted(theqid) == false) then
 			NrLeft = NrLeft + 1
 		end
-		if (IsQuestFlaggedCompleted(theqid) or AAPClassic.QuestList[theqid] or (AAPC1[AAPClassic.Realm][AAPClassic.Name]["Completed"] and AAPC1[AAPClassic.Realm][AAPClassic.Name]["Completed"][theqid])) then
+		if (C_QuestLog.IsQuestFlaggedCompleted(theqid) or AAPClassic.QuestList[theqid] or (AAPC1[AAPClassic.Realm][AAPClassic.Name]["Completed"] and AAPC1[AAPClassic.Realm][AAPClassic.Name]["Completed"][theqid])) then
 			Flagged = Flagged + 1
 		end
 	end
-	if (Step["PickUp2"] and (AAPClassic.QuestList[Step["PickUp2"]] or IsQuestFlaggedCompleted(Step["PickUp2"]))) then
+	if (Step["PickUp2"] and (AAPClassic.QuestList[Step["PickUp2"]] or C_QuestLog.IsQuestFlaggedCompleted(Step["PickUp2"]))) then
 		Total = Flagged
 	end
 	if (Total == Flagged) then
@@ -56,7 +56,7 @@ function AAPClassic.QF.PickUp()
 		local Class = AAPClassic.Class[3]
 		if (Step["PickUpClass"][Class] and Step["PickUpClass"][Class][AAPClassic.Race]) then
 			local Questids = Step["PickUpClass"][Class][AAPClassic.Race]["Qid"]
-			if (IsQuestFlaggedCompleted(Questids) or AAPClassic.QuestList[Questids]) then
+			if (C_QuestLog.IsQuestFlaggedCompleted(Questids) or AAPClassic.QuestList[Questids]) then
 				AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 				AAPClassic.QH.FuncLoopNumber = 1
 			end
@@ -77,7 +77,7 @@ function AAPClassic.QF.Qpart()
 	for AAP_index,AAP_value in pairs(IdList) do
 		for AAP_index2,AAP_value2 in pairs(AAP_value) do
 			Total = Total + 1
-			if (IsQuestFlaggedCompleted(AAP_index) or (AAPC1[AAPClassic.Realm][AAPClassic.Name]["Completed"] and AAPC1[AAPClassic.Realm][AAPClassic.Name]["Completed"][AAP_index])) then
+			if (C_QuestLog.IsQuestFlaggedCompleted(AAP_index) or (AAPC1[AAPClassic.Realm][AAPClassic.Name]["Completed"] and AAPC1[AAPClassic.Realm][AAPClassic.Name]["Completed"][AAP_index])) then
 				Flagged = Flagged + 1
 			elseif (AAPClassic.QuestList[AAP_index] and AAPClassic.QuestList[AAP_index]["Objectives"] and AAPClassic.QuestList[AAP_index]["Objectives"][tonumber(AAP_index2)] and AAPClassic.QuestList[AAP_index]["Objectives"][tonumber(AAP_index2)]["isComplete"] == 1) then
 				Flagged = Flagged + 1
@@ -88,7 +88,7 @@ function AAPClassic.QF.Qpart()
 		end
 	end
 	AAPClassic.Level = UnitLevel("player")
-	if (Step["Qpart2"] and (AAPClassic.QuestList[Step["Qpart2"]] or IsQuestFlaggedCompleted(Step["Qpart2"]))) then
+	if (Step["Qpart2"] and (AAPClassic.QuestList[Step["Qpart2"]] or C_QuestLog.IsQuestFlaggedCompleted(Step["Qpart2"]))) then
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 		AAPClassic.QH.FuncLoopNumber = 1
 	elseif (Step["AutoSkipLevel"] and AAPClassic.Level >= Step["AutoSkipLevel"]) then
@@ -121,16 +121,16 @@ function AAPClassic.QF.Done()
 	for h=1, getn(IdList) do
 		local theqid = IdList[h]
 		Total = Total + 1
-		if (not AAPClassic.QuestList[theqid] and IsQuestFlaggedCompleted(theqid) == false) then
+		if (not AAPClassic.QuestList[theqid] and C_QuestLog.IsQuestFlaggedCompleted(theqid) == false) then
 			Missing = 1
 		end
-		if (IsQuestFlaggedCompleted(theqid)) then
+		if (C_QuestLog.IsQuestFlaggedCompleted(theqid)) then
 			Flagged = Flagged + 1
 		elseif (AAPC1[AAPClassic.Realm][AAPClassic.Name]["Completed"] and AAPC1[AAPClassic.Realm][AAPClassic.Name]["Completed"][theqid]) then
 			Flagged = Flagged + 1
 		end
 	end
-	if (Step["Done2"] and (AAPClassic.QuestList[Step["Done2"]] or IsQuestFlaggedCompleted(Step["Done2"]))) then
+	if (Step["Done2"] and (AAPClassic.QuestList[Step["Done2"]] or C_QuestLog.IsQuestFlaggedCompleted(Step["Done2"]))) then
 		Total = Flagged
 		Missing = 0
 	end
@@ -148,7 +148,7 @@ function AAPClassic.QF.Done()
 		local Class = AAPClassic.Class[3]
 		if (Step["DoneClass"][Class] and Step["DoneClass"][Class][AAPClassic.Race]) then
 			local Questids = Step["DoneClass"][Class][AAPClassic.Race]["Qid"]
-			if (IsQuestFlaggedCompleted(Questids)) then
+			if (C_QuestLog.IsQuestFlaggedCompleted(Questids)) then
 				AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 				AAPClassic.QH.FuncLoopNumber = 1
 			end
@@ -161,7 +161,7 @@ function AAPClassic.QF.SetHS()
 	local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
 	local Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
 	local IdList = Step["SetHS"]
-	if (IsQuestFlaggedCompleted(IdList)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 		AAPClassic.QH.FuncLoopNumber = 1
 	end
@@ -171,7 +171,7 @@ function AAPClassic.QF.TrainAbilitys()
 	local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
 	local Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
 	local IdList = Step["TrainAbilitys"]
-	if (IsQuestFlaggedCompleted(IdList)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 		AAPClassic.QH.FuncLoopNumber = 1
 	end
@@ -182,7 +182,7 @@ function AAPClassic.QF.LearnCooking()
 	local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
 	local Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
 	local IdList = Step["LearnCooking"]
-	if (IsQuestFlaggedCompleted(IdList)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 		AAPClassic.QH.FuncLoopNumber = 1
 	end
@@ -203,7 +203,7 @@ function AAPClassic.QF.UseHS()
 	local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
 	local Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
 	local IdList = Step["UseHS"]
-	if (IsQuestFlaggedCompleted(IdList)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 		AAPClassic.QH.FuncLoopNumber = 1
 	else
@@ -257,7 +257,7 @@ function AAPClassic.QF.Cookingupdate()
 	local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
 	local Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
 	local IdList = Step["Cookingupdate"]
-	if (IdList and IsQuestFlaggedCompleted(IdList)) then
+	if (IdList and C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 		AAPClassic.QH.FuncLoopNumber = 1
 	end
@@ -274,7 +274,7 @@ function AAPClassic.QF.CRange()
 	if (Step and Step["Button"]) then
 		AAPClassic.QH.BookingList.ShowButton = Step["Button"]
 	end
-	if (IdList and IsQuestFlaggedCompleted(IdList)) then
+	if (IdList and C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 		AAPClassic.QH.FuncLoopNumber = 1
 	elseif (Step and Step["GroupTask"] and AAPC1[AAPClassic.Realm][AAPClassic.Name]["Elite"][Step["GroupTask"]]) then
@@ -287,7 +287,7 @@ function AAPClassic.QF.GetFP()
 	local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
 	local Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
 	local IdList = Step["GetFP"]
-	if (IsQuestFlaggedCompleted(IdList)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 		AAPClassic.QH.FuncLoopNumber = 1
 	end
@@ -297,7 +297,7 @@ function AAPClassic.QF.UseFP()
 	local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
 	local Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
 	local IdList = Step["UseFlightPath"]
-	if (IsQuestFlaggedCompleted(IdList)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 		AAPClassic.QH.FuncLoopNumber = 1
 	end
@@ -315,8 +315,8 @@ function AAPClassic.QF.ExtraQ()
 	end
 	if (Step) then
 		local ammountz = GetItemCount(Step["ItemID"])
-		--print(IsQuestFlaggedCompleted(Step["Qid"]))
-		if ((Step and Step["Qid"] and IsQuestFlaggedCompleted(Step["Qid"])) or (Step and ammountz and Step["Ammount"] and ammountz >= Step["Ammount"])) then
+		--print(C_QuestLog.IsQuestFlaggedCompleted(Step["Qid"]))
+		if ((Step and Step["Qid"] and C_QuestLog.IsQuestFlaggedCompleted(Step["Qid"])) or (Step and ammountz and Step["Ammount"] and ammountz >= Step["Ammount"])) then
 			AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 			AAPClassic.QH.FuncLoopNumber = 1
 		end

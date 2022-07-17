@@ -92,7 +92,7 @@ function AAPClassic.QLF.QuestText(Step)
 		AAPClassic.AddQuestPickUpIconFunc()
 		local IdList = Step["PickUp"]
 		for AAP_index,AAP_value in pairs(IdList) do
-			if (IsQuestFlaggedCompleted(AAP_value) == false and LineNumber ~= 20) then
+			if (C_QuestLog.IsQuestFlaggedCompleted(AAP_value) == false and LineNumber ~= 20) then
 				LineNumber = LineNumber + 1
 				if (AAPClassic["questsNames"][AAP_value] and AAPClassic["questsNames"][AAP_value]["T"]) then
 					AAPClassic.QL.QuestFrames["FS"..LineNumber]:SetText("Pick up: "..AAPClassic["questsNames"][AAP_value]["T"])
@@ -132,7 +132,7 @@ function AAPClassic.QLF.QuestText(Step)
 			end
 			for AAP_index2,AAP_value2 in pairs(AAP_value) do
 				local Indnumb = AAP_index2
-				if (IsQuestFlaggedCompleted(qidnbs)) then
+				if (C_QuestLog.IsQuestFlaggedCompleted(qidnbs)) then
 				elseif (AAPClassic.QuestList[qidnbs] and AAPClassic.QuestList[qidnbs]["Objectives"] and AAPClassic.QuestList[qidnbs]["Objectives"][tonumber(Indnumb)] and AAPClassic.QuestList[qidnbs]["Objectives"][tonumber(Indnumb)]["isComplete"] == 1) then
 				elseif (LineNumber ~= 20 and AAPClassic.QuestList[qidnbs] and AAPClassic.QuestList[qidnbs]["Objectives"] and AAPClassic.QuestList[qidnbs]["Objectives"][tonumber(Indnumb)] and AAPClassic.QuestList[qidnbs]["Objectives"][tonumber(Indnumb)] and AAPClassic.QuestList[qidnbs]["Objectives"][tonumber(Indnumb)]["text"]) then
 					LineNumber = LineNumber + 1
@@ -186,7 +186,7 @@ function AAPClassic.QLF.QuestText(Step)
 				AAPClassic.QL.QuestFrames["FS"..LineNumber]:SetText("Hand in: "..AAPClassic.QuestList[Derpster]["title"])
 				AAPClassic.QL.QuestFrames[LineNumber]:Show()
 			end
-			if (not AAPClassic.QuestList[Derpster] and not IsQuestFlaggedCompleted(Derpster)) then
+			if (not AAPClassic.QuestList[Derpster] and not C_QuestLog.IsQuestFlaggedCompleted(Derpster)) then
 				Missing = Derpster
 			end
 		end
@@ -280,7 +280,7 @@ end
 function AAPClassic.QLF.FillerText(TheFillers)
 	for AAP_index,AAP_value in pairs(TheFillers) do
 		for AAP_index2,AAP_value2 in pairs(AAP_value) do
-				if (IsQuestFlaggedCompleted(AAP_index)) then
+				if (C_QuestLog.IsQuestFlaggedCompleted(AAP_index)) then
 				elseif (AAPClassic.QuestList[AAP_index] and AAPClassic.QuestList[AAP_index]["Objectives"] and AAPClassic.QuestList[AAP_index]["Objectives"][tonumber(AAP_index2)] and AAPClassic.QuestList[AAP_index]["Objectives"][tonumber(AAP_index2)]["isComplete"] == 1) then
 				elseif (AAPClassic.QuestList[AAP_index] and AAPClassic.QuestList[AAP_index]["Objectives"] and AAPClassic.QuestList[AAP_index]["Objectives"][tonumber(AAP_index2)] and AAPClassic.QuestList[AAP_index]["Objectives"][tonumber(AAP_index2)] and AAPClassic.QuestList[AAP_index]["Objectives"][tonumber(AAP_index2)]["text"] and LineNumber ~= 20) then
 					LineNumber = LineNumber + 1

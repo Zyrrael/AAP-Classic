@@ -64,12 +64,20 @@ local function AAP_SlashCmd(AAP_index)
 	if (AAP_index == "reset") then
 		print("AAP: Resetting Zone.")
 		local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
+		if (AAPClassic.Path[AAPClassic.QH.ZoneNr] == nil or AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep] == nil) then
+			print("AAP: Unhandled state of quests and zones.");
+			return
+		end
 		local Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = 1
 		AAPClassic.QH.FuncLoopNumber = 1
 	elseif (AAP_index == "skip") then
 		print("AAP: Skipping QuestStep.")
 		local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
+		if (AAPClassic.Path[AAPClassic.QH.ZoneNr] == nil or AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep] == nil) then
+			print("AAP: Cannot skip QuestStep.")
+			return
+		end
 		local Step = AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]
 		AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] + 1
 		AAPClassic.QH.FuncLoopNumber = 1

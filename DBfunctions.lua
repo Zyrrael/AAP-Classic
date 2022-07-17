@@ -94,7 +94,7 @@ function AAPClassic.ListDBOnMap()
 	local derpcount = 0
 	for AAP_index2,AAP_value2 in pairs(AAPClassic.CurZoneQListedList) do
 		local CurQuest = AAPClassic["quests"][AAP_index2]
-		if (not IsQuestFlaggedCompleted(AAP_index2) and not AAPClassic.QuestList[AAP_index2] and CurQuest["min"] and CurQuest["lvl"] and ((AAPClassic.Level-7) < CurQuest["lvl"]) and AAPClassic.Level >= CurQuest["min"] and CurQuest["min"] > 1) then
+		if (not C_QuestLog.IsQuestFlaggedCompleted(AAP_index2) and not AAPClassic.QuestList[AAP_index2] and CurQuest["min"] and CurQuest["lvl"] and ((AAPClassic.Level-7) < CurQuest["lvl"]) and AAPClassic.Level >= CurQuest["min"] and CurQuest["min"] > 1) then
 			if (UnitFactionGroup("player") == "Alliance") then
 				local Continue = 0
 				
@@ -106,7 +106,7 @@ function AAPClassic.ListDBOnMap()
 					Continue = 1
 				end
 				if (Continue == 1) then
-					if ((not CurQuest["pre"] or IsQuestFlaggedCompleted(CurQuest["pre"])) and (not CurQuest["class"] or CurQuest["class"] == AAPClassic.ClassDBConv[AAPClassic.Class[3]])) then
+					if ((not CurQuest["pre"] or C_QuestLog.IsQuestFlaggedCompleted(CurQuest["pre"])) and (not CurQuest["class"] or CurQuest["class"] == AAPClassic.ClassDBConv[AAPClassic.Class[3]])) then
 						if (CurQuest["start"] and CurQuest["start"]["U"]) then
 							for AAP_a1,AAP_b1 in pairs(CurQuest["start"]["U"]) do
 								local unitid = CurQuest["start"]["U"][AAP_a1]
@@ -170,7 +170,7 @@ function AAPClassic.ListDBOnMap()
 					Continue = 1
 				end
 				if (Continue == 1) then
-					if ((not CurQuest["pre"] or IsQuestFlaggedCompleted(CurQuest["pre"])) and (not CurQuest["class"] or CurQuest["class"] == AAPClassic.ClassDBConv[AAPClassic.Class[3]])) then
+					if ((not CurQuest["pre"] or C_QuestLog.IsQuestFlaggedCompleted(CurQuest["pre"])) and (not CurQuest["class"] or CurQuest["class"] == AAPClassic.ClassDBConv[AAPClassic.Class[3]])) then
 						if (CurQuest["start"] and CurQuest["start"]["U"]) then
 							for AAP_a1,AAP_b1 in pairs(CurQuest["start"]["U"]) do
 								local unitid = CurQuest["start"]["U"][AAP_a1]
@@ -234,7 +234,7 @@ function AAPClassic.PreListDBOnMap(CurZoneID)
 	local derpcount = 0
 	for AAP_index2,AAP_value2 in pairs(AAPClassic["quests"]) do
 		local CurQuest = AAPClassic["quests"][AAP_index2]
-		if (not IsQuestFlaggedCompleted(AAP_index2) and not AAPClassic.QuestList[AAP_index2] and CurQuest["min"] and ((AAPClassic.Level-7) < CurQuest["lvl"]) and AAPClassic.Level >= CurQuest["min"] and CurQuest["min"] > 1) then
+		if (not C_QuestLog.IsQuestFlaggedCompleted(AAP_index2) and not AAPClassic.QuestList[AAP_index2] and CurQuest["min"] and ((AAPClassic.Level-7) < CurQuest["lvl"]) and AAPClassic.Level >= CurQuest["min"] and CurQuest["min"] > 1) then
 			if (UnitFactionGroup("player") == "Alliance") then
 				local Continue = 0
 				
@@ -246,7 +246,7 @@ function AAPClassic.PreListDBOnMap(CurZoneID)
 					Continue = 1
 				end
 				if (Continue == 1) then
-					if ((not CurQuest["pre"] or IsQuestFlaggedCompleted(CurQuest["pre"])) and (not CurQuest["class"] or CurQuest["class"] == AAPClassic.ClassDBConv[AAPClassic.Class[3]])) then
+					if ((not CurQuest["pre"] or C_QuestLog.IsQuestFlaggedCompleted(CurQuest["pre"])) and (not CurQuest["class"] or CurQuest["class"] == AAPClassic.ClassDBConv[AAPClassic.Class[3]])) then
 						if (CurQuest["start"] and CurQuest["start"]["U"]) then
 							for AAP_a1,AAP_b1 in pairs(CurQuest["start"]["U"]) do
 								local unitid = CurQuest["start"]["U"][AAP_a1]
@@ -290,7 +290,7 @@ function AAPClassic.PreListDBOnMap(CurZoneID)
 					Continue = 1
 				end
 				if (Continue == 1) then
-					if ((not CurQuest["pre"] or IsQuestFlaggedCompleted(CurQuest["pre"])) and (not CurQuest["class"] or CurQuest["class"] == AAPClassic.ClassDBConv[AAPClassic.Class[3]])) then
+					if ((not CurQuest["pre"] or C_QuestLog.IsQuestFlaggedCompleted(CurQuest["pre"])) and (not CurQuest["class"] or CurQuest["class"] == AAPClassic.ClassDBConv[AAPClassic.Class[3]])) then
 						if (CurQuest["start"] and CurQuest["start"]["U"]) then
 							for AAP_a1,AAP_b1 in pairs(CurQuest["start"]["U"]) do
 								local unitid = CurQuest["start"]["U"][AAP_a1]

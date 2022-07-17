@@ -42,146 +42,144 @@ function AAPClassic.QH.UpdateMapIdHorde()
 	end
 	AAPClassic.OldZoneId = AAPClassic.QH.ZoneNr
 	if (OldMapID ~= AAPClassic.QH.ZoneNr) then
-		--print("new zone"..AAPClassic.QH.ZoneNr)
+		print("new zone"..AAPClassic.QH.ZoneNr)
 		AAPClassic.RemoveIcons()
 		AAPClassic.QuestList = nil
 		AAPClassic.QuestList = {}
-		if (AAPClassic.QuestHelperEnable == "on") then	
+		if (AAPClassic.QuestHelperEnable == "on") then
 			AAPClassic.QH.ZoneNr = "QuestHelper"
 		end
 		AAPClassic.QH.UpdateQuestList()
 	end
-	
+
 	---- test
-	if (AAPClassic.QuestHelperEnable == "on") then	
+	if (AAPClassic.QuestHelperEnable == "on") then
 		AAPClassic.QH.ZoneNr = "QuestHelper"
 	end
 
 ---------------------------------- Undead Starts ---------------------
-	if (not AAPClassic.QuestList[365] and not IsQuestFlaggedCompleted(365) and AAPClassic.Race == "Scourge") then
+	if (not AAPClassic.QuestList[365] and not C_QuestLog.IsQuestFlaggedCompleted(365) and AAPClassic.Race == "Scourge") then
 		AAPClassic.QH.ZoneNr = "1-5Undead"
-	elseif ((AAPClassic.QuestList[365] or IsQuestFlaggedCompleted(365)) and not IsQuestFlaggedCompleted(371) and not AAPClassic.QuestList[371] and AAPClassic.Race == "Scourge") then
+	elseif ((AAPClassic.QuestList[365] or C_QuestLog.IsQuestFlaggedCompleted(365)) and not C_QuestLog.IsQuestFlaggedCompleted(371) and not AAPClassic.QuestList[371] and AAPClassic.Race == "Scourge") then
 		AAPClassic.QH.ZoneNr = "5-10Undead"
-	elseif (not IsQuestFlaggedCompleted(372) and (AAPClassic.QuestList[371] or IsQuestFlaggedCompleted(371)) and AAPClassic.Race == "Scourge" and AAPClassic.Class[3] == 1) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(372) and (AAPClassic.QuestList[371] or C_QuestLog.IsQuestFlaggedCompleted(371)) and AAPClassic.Race == "Scourge" and AAPClassic.Class[3] == 1) then
 		AAPClassic.QH.ZoneNr = "10-12Undead-Warrior"
-	elseif (not IsQuestFlaggedCompleted(372) and (AAPClassic.QuestList[371] or IsQuestFlaggedCompleted(371)) and AAPClassic.Race == "Scourge" and AAPClassic.Class[3] == 4) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(372) and (AAPClassic.QuestList[371] or C_QuestLog.IsQuestFlaggedCompleted(371)) and AAPClassic.Race == "Scourge" and AAPClassic.Class[3] == 4) then
 		AAPClassic.QH.ZoneNr = "10-12Undead-Rogue"
-	elseif (not IsQuestFlaggedCompleted(372) and (AAPClassic.QuestList[371] or IsQuestFlaggedCompleted(371)) and AAPClassic.Race == "Scourge" and AAPClassic.Class[3] == 5) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(372) and (AAPClassic.QuestList[371] or C_QuestLog.IsQuestFlaggedCompleted(371)) and AAPClassic.Race == "Scourge" and AAPClassic.Class[3] == 5) then
 		AAPClassic.QH.ZoneNr = "10-12Undead-Priest"
-	elseif (not IsQuestFlaggedCompleted(372) and (AAPClassic.QuestList[371] or IsQuestFlaggedCompleted(371)) and AAPClassic.Race == "Scourge" and AAPClassic.Class[3] == 8) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(372) and (AAPClassic.QuestList[371] or C_QuestLog.IsQuestFlaggedCompleted(371)) and AAPClassic.Race == "Scourge" and AAPClassic.Class[3] == 8) then
 		AAPClassic.QH.ZoneNr = "10-12Undead-Mage"
-	elseif (not IsQuestFlaggedCompleted(372) and (AAPClassic.QuestList[371] or IsQuestFlaggedCompleted(371)) and AAPClassic.Race == "Scourge" and AAPClassic.Class[3] == 9) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(372) and (AAPClassic.QuestList[371] or C_QuestLog.IsQuestFlaggedCompleted(371)) and AAPClassic.Race == "Scourge" and AAPClassic.Class[3] == 9) then
 		AAPClassic.QH.ZoneNr = "10-12Undead-Warlock"
-	elseif (not IsQuestFlaggedCompleted(871) and IsQuestFlaggedCompleted(372) and AAPClassic.Race == "Scourge") then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(871) and C_QuestLog.IsQuestFlaggedCompleted(372) and AAPClassic.Race == "Scourge") then
 		AAPClassic.QH.ZoneNr = "12-15Undead-UC-Orgri-XR"
 	end
+	
 ---------------------------------- Undead Ends ---------------------
 
 ---------------------------------- Tauren Starts ---------------------
-	if (not IsQuestFlaggedCompleted(871) and AAPClassic.Race == "Tauren" and AAPClassic.Class[3] == 1) then
+	if (not C_QuestLog.IsQuestFlaggedCompleted(871) and AAPClassic.Race == "Tauren" and AAPClassic.Class[3] == 1) then
 		AAPClassic.QH.ZoneNr = "1-12Tauren-Warrior"
-	elseif (not IsQuestFlaggedCompleted(871) and AAPClassic.Race == "Tauren" and AAPClassic.Class[3] == 3) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(871) and AAPClassic.Race == "Tauren" and AAPClassic.Class[3] == 3) then
 		AAPClassic.QH.ZoneNr = "1-12Tauren-Hunter"
-	elseif (not IsQuestFlaggedCompleted(871) and AAPClassic.Race == "Tauren" and AAPClassic.Class[3] == 7) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(871) and AAPClassic.Race == "Tauren" and AAPClassic.Class[3] == 7) then
 		AAPClassic.QH.ZoneNr = "1-12Tauren-Shaman"
-	elseif (not IsQuestFlaggedCompleted(871) and AAPClassic.Race == "Tauren" and AAPClassic.Class[3] == 11) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(871) and AAPClassic.Race == "Tauren" and AAPClassic.Class[3] == 11) then
 		AAPClassic.QH.ZoneNr = "1-12Tauren-Druid"
 	end
 ---------------------------------- Tauren Ends ---------------------
 
 ---------------------------------- Orc & Troll Starts ---------------------
-	if (not IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 1) then
+	if (not C_QuestLog.IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 1) then
 		AAPClassic.QH.ZoneNr = "1-12OrcTroll-Warrior"
-	elseif (not IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 3) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 3) then
 		AAPClassic.QH.ZoneNr = "1-12OrcTroll-Hunter"
-	elseif (not IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 4) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 4) then
 		AAPClassic.QH.ZoneNr = "1-12OrcTroll-Rogue"
-	elseif (not IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 5) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 5) then
 		AAPClassic.QH.ZoneNr = "1-12OrcTroll-Priest"
-	elseif (not IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 7) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 7) then
 		AAPClassic.QH.ZoneNr = "1-12OrcTroll-Shaman"
-	elseif (not IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 8) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 8) then
 		AAPClassic.QH.ZoneNr = "1-12OrcTroll-Mage"
-	elseif (not IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 9) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(871) and (AAPClassic.Race == "Troll" or AAPClassic.Race == "Orc") and AAPClassic.Class[3] == 9) then
 		AAPClassic.QH.ZoneNr = "1-12OrcTroll-Warlock"
 	end
 ---------------------------------- Orc & Troll Ends ---------------------
-	
-	
-
 
 	--- 12-15 The Barrens ---
-	if (IsQuestFlaggedCompleted(871) and not IsQuestFlaggedCompleted(6548) and not AAPClassic.QuestList[6548]) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(871) and not C_QuestLog.IsQuestFlaggedCompleted(6548) and not AAPClassic.QuestList[6548]) then
 		AAPClassic.QH.ZoneNr = "12-15TheBarrens"
 	end
 	--- 15-16 Stonetalon Mountains ---
-	if ((IsQuestFlaggedCompleted(6548) or AAPClassic.QuestList[6548]) and not IsQuestFlaggedCompleted(6629)) then
+	if ((C_QuestLog.IsQuestFlaggedCompleted(6548) or AAPClassic.QuestList[6548]) and not C_QuestLog.IsQuestFlaggedCompleted(6629)) then
 		AAPClassic.QH.ZoneNr = "15-16StonetalonMountains"
 	end
 	--- 16 The Barrens ---
-	if (IsQuestFlaggedCompleted(6629) and not IsQuestFlaggedCompleted(878) and not AAPClassic.QuestList[878]) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(6629) and not C_QuestLog.IsQuestFlaggedCompleted(878) and not AAPClassic.QuestList[878]) then
 		AAPClassic.QH.ZoneNr = "16TheBarrens"
 	end
 	--- 16 GoTo Thunder Bluff ---
-	if ((IsQuestFlaggedCompleted(878) or AAPClassic.QuestList[878]) and not IsQuestFlaggedCompleted(4921) and AAPClassic.Race == "Tauren") then
+	if ((C_QuestLog.IsQuestFlaggedCompleted(878) or AAPClassic.QuestList[878]) and not C_QuestLog.IsQuestFlaggedCompleted(4921) and AAPClassic.Race == "Tauren") then
 		AAPClassic.QH.ZoneNr = "16GotoTB-Tauren"
-	elseif ((IsQuestFlaggedCompleted(878) or AAPClassic.QuestList[878]) and not IsQuestFlaggedCompleted(4921)) then
+	elseif ((C_QuestLog.IsQuestFlaggedCompleted(878) or AAPClassic.QuestList[878]) and not C_QuestLog.IsQuestFlaggedCompleted(4921)) then
 		AAPClassic.QH.ZoneNr = "16GotoTB-Rest"
 	end
 	--- 16-20 The Barrens ---
-	if (IsQuestFlaggedCompleted(4921) and not IsQuestFlaggedCompleted(880)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(4921) and not C_QuestLog.IsQuestFlaggedCompleted(880)) then
 		AAPClassic.QH.ZoneNr = "16-20TheBarrens"
 	end
 	--- 20 Thunder Bluff Prep ---
-	if (IsQuestFlaggedCompleted(880) and not IsQuestFlaggedCompleted(1060)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(880) and not C_QuestLog.IsQuestFlaggedCompleted(1060)) then
 		AAPClassic.QH.ZoneNr = "20-TB-Prep"
 	end
 	--- 20-23 Ashenvale & South Barrens ---
-	if (IsQuestFlaggedCompleted(1060) and not IsQuestFlaggedCompleted(868)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1060) and not C_QuestLog.IsQuestFlaggedCompleted(868)) then
 		AAPClassic.QH.ZoneNr = "20-23Ashenvale-SouthBarrens"
 	end
 	--- 23-25 StonetalonMountains ---
-	if (IsQuestFlaggedCompleted(868) and not IsQuestFlaggedCompleted(6381)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(868) and not C_QuestLog.IsQuestFlaggedCompleted(6381)) then
 		AAPClassic.QH.ZoneNr = "23-25StonetalonMountains"
 	end
 	--- 25 Southern Barrens ---
-	if (IsQuestFlaggedCompleted(6381) and not IsQuestFlaggedCompleted(5881)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(6381) and not C_QuestLog.IsQuestFlaggedCompleted(5881)) then
 		AAPClassic.QH.ZoneNr = "23-25StonetalonMountains"
 	end
 	--- 25-26 Thousand Needles ---
-	if (IsQuestFlaggedCompleted(5881) and not IsQuestFlaggedCompleted(913)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(5881) and not C_QuestLog.IsQuestFlaggedCompleted(913)) then
 		AAPClassic.QH.ZoneNr = "25-26ThousandNeedles"
 	end
 	--- 26-28 Ashenvale ---
-	if (IsQuestFlaggedCompleted(913) and not IsQuestFlaggedCompleted(1196)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(913) and not C_QuestLog.IsQuestFlaggedCompleted(1196)) then
 		AAPClassic.QH.ZoneNr = "26-28Ashenvale"
 	end
 	--- 28-30 Thousand Needles & Hillsbrad Foothills ---
-	if (IsQuestFlaggedCompleted(1196) and not IsQuestFlaggedCompleted(655)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1196) and not C_QuestLog.IsQuestFlaggedCompleted(655)) then
 		AAPClassic.QH.ZoneNr = "28-30TN-Hillsbrad"
 	end
 	--- 30 Arathi Highlands to Stranglethorn Vale ---
-	if (IsQuestFlaggedCompleted(655) and not IsQuestFlaggedCompleted(583)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(655) and not C_QuestLog.IsQuestFlaggedCompleted(583)) then
 		AAPClassic.QH.ZoneNr = "30-Arathi-STV"
 	end
 	--- 30-32 Stranglethorn Vale & Thousand Needles ---
-	if (IsQuestFlaggedCompleted(583) and not IsQuestFlaggedCompleted(1145)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(583) and not C_QuestLog.IsQuestFlaggedCompleted(1145)) then
 		AAPClassic.QH.ZoneNr = "30-32STV-TN"
 	end
 	--- 32-34 Desolace ---
-	if (IsQuestFlaggedCompleted(1145) and not IsQuestFlaggedCompleted(1180)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1145) and not C_QuestLog.IsQuestFlaggedCompleted(1180)) then
 		AAPClassic.QH.ZoneNr = "32-34Desolace"
 	end
 	--- 34-37 ---
-	if (IsQuestFlaggedCompleted(1180) and not IsQuestFlaggedCompleted(545)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1180) and not C_QuestLog.IsQuestFlaggedCompleted(545)) then
 		AAPClassic.QH.ZoneNr = "34-37"
 	end
 	--- 37-40 ---
-	if (IsQuestFlaggedCompleted(545) and not IsQuestFlaggedCompleted(1106)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(545) and not C_QuestLog.IsQuestFlaggedCompleted(1106)) then
 		AAPClassic.QH.ZoneNr = "37-40"
 	end
 
-	if (AAPClassic.QuestHelperEnable == "on") then	
+	if (AAPClassic.QuestHelperEnable == "on") then
 		AAPClassic.QH.ZoneNr = "QuestHelper"
 	end
 	if (OldMapID ~= AAPClassic.QH.ZoneNr) then
@@ -192,7 +190,7 @@ function AAPClassic.QH.UpdateMapIdHorde()
 		if (not AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]) then
 			AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = 1
 		end
-		if (AAPClassic.QuestHelperEnable == "on") then	
+		if (AAPClassic.QuestHelperEnable == "on") then
 			AAPClassic.QH.ZoneNr = "QuestHelper"
 		end
 	end
@@ -217,201 +215,201 @@ function AAPClassic.QH.UpdateMapIdAlly()
 	AAPClassic.OldZoneId = AAPClassic.QH.ZoneNr
 	AAPClassic.QH.ZoneNr = AAPClassic.QH.ZoneNr
 
-	
+
 	---- test
-	if (AAPClassic.QuestHelperEnable == "on") then	
+	if (AAPClassic.QuestHelperEnable == "on") then
 		AAPClassic.QH.ZoneNr = "QuestHelper"
 	end
 
 ---------------------------------- NightElf Starts ---------------------
-	if (not IsQuestFlaggedCompleted(3524) and AAPClassic.Race == "NightElf" and AAPClassic.Class[3] == 1) then
+	if (not C_QuestLog.IsQuestFlaggedCompleted(3524) and AAPClassic.Race == "NightElf" and AAPClassic.Class[3] == 1) then
 		AAPClassic.QH.ZoneNr = "1-12NightElf-Warrior"
-	elseif (not IsQuestFlaggedCompleted(3524) and AAPClassic.Race == "NightElf" and AAPClassic.Class[3] == 3) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and AAPClassic.Race == "NightElf" and AAPClassic.Class[3] == 3) then
 		AAPClassic.QH.ZoneNr = "1-12NightElf-Hunter"
-	elseif (not IsQuestFlaggedCompleted(3524) and AAPClassic.Race == "NightElf" and AAPClassic.Class[3] == 4) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and AAPClassic.Race == "NightElf" and AAPClassic.Class[3] == 4) then
 		AAPClassic.QH.ZoneNr = "1-12NightElf-Rogue"
-	elseif (not IsQuestFlaggedCompleted(3524) and AAPClassic.Race == "NightElf" and AAPClassic.Class[3] == 5) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and AAPClassic.Race == "NightElf" and AAPClassic.Class[3] == 5) then
 		AAPClassic.QH.ZoneNr = "1-12NightElf-Priest"
-	elseif (not IsQuestFlaggedCompleted(3524) and AAPClassic.Race == "NightElf" and AAPClassic.Class[3] == 11) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and AAPClassic.Race == "NightElf" and AAPClassic.Class[3] == 11) then
 		AAPClassic.QH.ZoneNr = "1-12NightElf-Druid"
 	end
 ---------------------------------- NightElf Ends ---------------------
 
-	
+
 ---------------------------------- Dwarf and Gnome Starts ---------------------
-	if (not IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 1) then
+	if (not C_QuestLog.IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 1) then
 		AAPClassic.QH.ZoneNr = "1-6DwarfGnome-Warrior"
-	elseif (not IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 2) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 2) then
 		AAPClassic.QH.ZoneNr = "1-6DwarfGnome-Paladin"
-	elseif (not IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 3) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 3) then
 		AAPClassic.QH.ZoneNr = "1-6DwarfGnome-Hunter"
-	elseif (not IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 4) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 4) then
 		AAPClassic.QH.ZoneNr = "1-6DwarfGnome-Rogue"
-	elseif (not IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 5) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 5) then
 		AAPClassic.QH.ZoneNr = "1-6DwarfGnome-Priest"
-	elseif (not IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 8) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 8) then
 		AAPClassic.QH.ZoneNr = "1-6DwarfGnome-Mage"
-	elseif (not IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 9) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2160) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 9) then
 		AAPClassic.QH.ZoneNr = "1-6DwarfGnome-Warlock"
-	elseif (not IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 1) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 1) then
 		AAPClassic.QH.ZoneNr = "6-12DwarfGnome-Warrior"
-	elseif (not IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 2) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 2) then
 		AAPClassic.QH.ZoneNr = "6-12DwarfGnome-Paladin"
-	elseif (not IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 3) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 3) then
 		AAPClassic.QH.ZoneNr = "6-12DwarfGnome-Hunter"
-	elseif (not IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 4) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 4) then
 		AAPClassic.QH.ZoneNr = "6-12DwarfGnome-Rogue"
-	elseif (not IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 5) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 5) then
 		AAPClassic.QH.ZoneNr = "6-12DwarfGnome-Priest"
-	elseif (not IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 8) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 8) then
 		AAPClassic.QH.ZoneNr = "6-12DwarfGnome-Mage"
-	elseif (not IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 9) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and (AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome") and AAPClassic.Class[3] == 9) then
 		AAPClassic.QH.ZoneNr = "6-12DwarfGnome-Warlock"
 	end
 ---------------------------------- Dwarf and Gnome Ends ---------------------
 
 ---------------------------------- Human Starts ---------------------
 	--- Elwynn Forest (Human) Start Area
-	if (not IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 1) then
+	if (not C_QuestLog.IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 1) then
 		AAPClassic.QH.ZoneNr = "1-5Human-Warrior"
-	elseif (not IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 2) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 2) then
 		AAPClassic.QH.ZoneNr = "1-5Human-Paladin"
-	elseif (not IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 4) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 4) then
 		AAPClassic.QH.ZoneNr = "1-5Human-Rogue"
-	elseif (not IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 5) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 5) then
 		AAPClassic.QH.ZoneNr = "1-5Human-Priest"
-	elseif (not IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 8) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 8) then
 		AAPClassic.QH.ZoneNr = "1-5Human-Mage"
-	elseif (not IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 9) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(2158) and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 9) then
 		AAPClassic.QH.ZoneNr = "1-5Human-Warlock"
-	elseif (not IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 1) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 1) then
 		AAPClassic.QH.ZoneNr = "5-12Human-Warrior"
-	elseif (not IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 2) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 2) then
 		AAPClassic.QH.ZoneNr = "5-12Human-Paladin"
-	elseif (not IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 4) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 4) then
 		AAPClassic.QH.ZoneNr = "5-12Human-Rogue"
-	elseif (not IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 5) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 5) then
 		AAPClassic.QH.ZoneNr = "5-12Human-Priest"
-	elseif (not IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 8) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 8) then
 		AAPClassic.QH.ZoneNr = "5-12Human-Mage"
-	elseif (not IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 9) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(224) and not AAPClassic.QuestList[224] and (AAPClassic.Race == "Human") and AAPClassic.Class[3] == 9) then
 		AAPClassic.QH.ZoneNr = "5-12Human-Warlock"
-	elseif (not IsQuestFlaggedCompleted(3524) and (IsQuestFlaggedCompleted(224) or AAPClassic.QuestList[224]) and (AAPClassic.Race == "Human")) then
+	elseif (not C_QuestLog.IsQuestFlaggedCompleted(3524) and (C_QuestLog.IsQuestFlaggedCompleted(224) or AAPClassic.QuestList[224]) and (AAPClassic.Race == "Human")) then
 		AAPClassic.QH.ZoneNr = "12-13Human-LochModan-Darkshore"
 	end
 ---------------------------------- Human Ends ---------------------
 
 	--- 12-17 Darkshore ---
-	if (IsQuestFlaggedCompleted(3524) and (not IsQuestFlaggedCompleted(1138) or not IsQuestFlaggedCompleted(4727) or not IsQuestFlaggedCompleted(2139) or not IsQuestFlaggedCompleted(4763))) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(3524) and (not C_QuestLog.IsQuestFlaggedCompleted(1138) or not C_QuestLog.IsQuestFlaggedCompleted(4727) or not C_QuestLog.IsQuestFlaggedCompleted(2139) or not C_QuestLog.IsQuestFlaggedCompleted(4763))) then
 		AAPClassic.QH.ZoneNr = "12-17Darkshore"
 	end
 	--- 17 NightElf - Darkshore to Loch Modan Run ---
-	if (not IsQuestFlaggedCompleted(307) and AAPClassic.QuestList[307] and IsQuestFlaggedCompleted(1138) and IsQuestFlaggedCompleted(4727) and IsQuestFlaggedCompleted(2139) and IsQuestFlaggedCompleted(4763) and AAPClassic.Race == "NightElf") then
+	if (not C_QuestLog.IsQuestFlaggedCompleted(307) and not AAPClassic.QuestList[307] and C_QuestLog.IsQuestFlaggedCompleted(1138) and C_QuestLog.IsQuestFlaggedCompleted(4727) and C_QuestLog.IsQuestFlaggedCompleted(2139) and C_QuestLog.IsQuestFlaggedCompleted(4763) and AAPClassic.Race == "NightElf") then
 		AAPClassic.QH.ZoneNr = "17-NightElf-WetlandsRun"
 	end
 	--- 17-18 NightElf - Loch Modan ---
-	if (not IsQuestFlaggedCompleted(301) and (IsQuestFlaggedCompleted(307) or AAPClassic.QuestList[307]) and AAPClassic.Race == "NightElf") then
+	if (not C_QuestLog.IsQuestFlaggedCompleted(301) and (C_QuestLog.IsQuestFlaggedCompleted(307) or AAPClassic.QuestList[307]) and AAPClassic.Race == "NightElf") then
 		AAPClassic.QH.ZoneNr = "17-18NightElf-LochModan"
 	end
 	--- 17-18 Human - Darkshore to Loch Modan and Loch Modan ---
-	if (not IsQuestFlaggedCompleted(301) and IsQuestFlaggedCompleted(1138) and IsQuestFlaggedCompleted(4727) and IsQuestFlaggedCompleted(2139) and IsQuestFlaggedCompleted(4763) and (AAPClassic.Race == "Human" or AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome")) then
+	if (not C_QuestLog.IsQuestFlaggedCompleted(301) and C_QuestLog.IsQuestFlaggedCompleted(1138) and C_QuestLog.IsQuestFlaggedCompleted(4727) and C_QuestLog.IsQuestFlaggedCompleted(2139) and C_QuestLog.IsQuestFlaggedCompleted(4763) and (AAPClassic.Race == "Human" or AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome")) then
 		AAPClassic.QH.ZoneNr = "17-18HumanDwarfGnome-LochModan"
 	end
 	--- 18 Ironforge to Redridge Mountains Human ---
-	if (IsQuestFlaggedCompleted(301) and not IsQuestFlaggedCompleted(127) and not AAPClassic.QuestList[127] and AAPClassic.Race == "Human") then
+	if (C_QuestLog.IsQuestFlaggedCompleted(301) and not C_QuestLog.IsQuestFlaggedCompleted(127) and not AAPClassic.QuestList[127] and AAPClassic.Race == "Human") then
 		AAPClassic.QH.ZoneNr = "18-Human-IronforgeRedridge"
 	end
 	--- 18 Ironforge to Redridge Mountains NightElf Dwarf Gnome ---
-	if (IsQuestFlaggedCompleted(301) and not IsQuestFlaggedCompleted(127) and not AAPClassic.QuestList[127] and (AAPClassic.Race == "NightElf" or AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome")) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(301) and not C_QuestLog.IsQuestFlaggedCompleted(127) and not AAPClassic.QuestList[127] and (AAPClassic.Race == "NightElf" or AAPClassic.Race == "Dwarf" or AAPClassic.Race == "Gnome")) then
 		AAPClassic.QH.ZoneNr = "18-NightElfDwarfGnome-IronforgeRedridge"
 	end
 	--- 18-20 Redridge Mountains ---
-	if ((AAPClassic.QuestList[127] or IsQuestFlaggedCompleted(127)) and (not IsQuestFlaggedCompleted(89) or not IsQuestFlaggedCompleted(150))) then
+	if ((AAPClassic.QuestList[127] or C_QuestLog.IsQuestFlaggedCompleted(127)) and (not C_QuestLog.IsQuestFlaggedCompleted(89) or not C_QuestLog.IsQuestFlaggedCompleted(150))) then
 		AAPClassic.QH.ZoneNr = "18-20RedridgeMountains"
 	end
 	--- 20 Redridge Mountains to Darkshore ---
-	if (IsQuestFlaggedCompleted(89) and IsQuestFlaggedCompleted(150) and not IsQuestFlaggedCompleted(729)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(89) and C_QuestLog.IsQuestFlaggedCompleted(150) and not C_QuestLog.IsQuestFlaggedCompleted(729)) then
 		AAPClassic.QH.ZoneNr = "20-RedridgeDarkshore"
 	end
 	--- 20-21 Darkshore ---
-	if (IsQuestFlaggedCompleted(729) and not IsQuestFlaggedCompleted(967)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(729) and not C_QuestLog.IsQuestFlaggedCompleted(967)) then
 		AAPClassic.QH.ZoneNr = "20-21Darkshore"
 	end
 	--- 21-22 Ashenvale and Stonetalon ---
-	if (IsQuestFlaggedCompleted(967) and not IsQuestFlaggedCompleted(1056)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(967) and (not C_QuestLog.IsQuestFlaggedCompleted(1056) and not C_QuestLog.IsQuestFlaggedCompleted(1071))) then
 		AAPClassic.QH.ZoneNr = "21-22AshenvaleStonetalon"
 	end
 	--- 22-24 Darkshore ---
-	if (IsQuestFlaggedCompleted(1056) and not IsQuestFlaggedCompleted(993)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1056) and not C_QuestLog.IsQuestFlaggedCompleted(993)) then
 		AAPClassic.QH.ZoneNr = "22-24Darkshore"
 	end
 	--- 24 Ashenvale ---
-	if (IsQuestFlaggedCompleted(993) and not IsQuestFlaggedCompleted(279) and not AAPClassic.QuestList[279]) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(993) and not C_QuestLog.IsQuestFlaggedCompleted(279) and not AAPClassic.QuestList[279]) then
 		AAPClassic.QH.ZoneNr = "24-Ashenvale"
 	end
 	--- 24-27 Wetlands ---
-	if ((IsQuestFlaggedCompleted(279) or AAPClassic.QuestList[279]) and not IsQuestFlaggedCompleted(1072)) then
+	if ((C_QuestLog.IsQuestFlaggedCompleted(279) or AAPClassic.QuestList[279]) and not C_QuestLog.IsQuestFlaggedCompleted(1072)) then
 		AAPClassic.QH.ZoneNr = "24-27Wetlands"
 	end
 	--- 27-28 Redridge Mountains ---
-	if (IsQuestFlaggedCompleted(1072) and not IsQuestFlaggedCompleted(128)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1072) and not C_QuestLog.IsQuestFlaggedCompleted(128)) then
 		AAPClassic.QH.ZoneNr = "27-28RedridgeMountains"
 	end
 	--- 28-30 Duskwood ---
-	if (IsQuestFlaggedCompleted(128) and not IsQuestFlaggedCompleted(1241)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(128) and not C_QuestLog.IsQuestFlaggedCompleted(1241)) then
 		AAPClassic.QH.ZoneNr = "28-30Duskwood"
 	end
 	--- 30 Ashenvale ---
-	if (IsQuestFlaggedCompleted(1241) and not IsQuestFlaggedCompleted(1140)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1241) and not C_QuestLog.IsQuestFlaggedCompleted(1140)) then
 		AAPClassic.QH.ZoneNr = "30-Ashenvale"
 	end
 	--- 30-31 Wetlands ---
-	if (IsQuestFlaggedCompleted(1140) and not IsQuestFlaggedCompleted(634)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1140) and not C_QuestLog.IsQuestFlaggedCompleted(634)) then
 		AAPClassic.QH.ZoneNr = "30-31Wetlands"
 	end
 	--- 31-32 Hillsbrad Foothills ---
-	if (IsQuestFlaggedCompleted(634) and not IsQuestFlaggedCompleted(564)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(634) and not C_QuestLog.IsQuestFlaggedCompleted(564)) then
 		AAPClassic.QH.ZoneNr = "31-32HillsbradFoothills"
 	end
 	--- 32 Run About ---
-	if (IsQuestFlaggedCompleted(564) and not IsQuestFlaggedCompleted(98)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(564) and not C_QuestLog.IsQuestFlaggedCompleted(98)) then
 		AAPClassic.QH.ZoneNr = "32-RunAbout"
 	end
 	--- 32-33 Stranglethorn Vale ---
-	if (IsQuestFlaggedCompleted(98) and not IsQuestFlaggedCompleted(1179)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(98) and not C_QuestLog.IsQuestFlaggedCompleted(1179)) then
 		AAPClassic.QH.ZoneNr = "32-33StranglethornVale"
 	end
 	--- 33-34 Thousand Needles ---
-	if (IsQuestFlaggedCompleted(1179) and not IsQuestFlaggedCompleted(1454) and not AAPClassic.QuestList[1454]) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1179) and not C_QuestLog.IsQuestFlaggedCompleted(1454) and not AAPClassic.QuestList[1454]) then
 		AAPClassic.QH.ZoneNr = "33-34Thousand Needles"
 	end
 	--- 34-36 Desolace ---
-	if ((IsQuestFlaggedCompleted(1454) or AAPClassic.QuestList[1454]) and not IsQuestFlaggedCompleted(1178)) then
+	if ((C_QuestLog.IsQuestFlaggedCompleted(1454) or AAPClassic.QuestList[1454]) and not C_QuestLog.IsQuestFlaggedCompleted(1178)) then
 		AAPClassic.QH.ZoneNr = "34-36Desolace"
 	end
 	--- 36-37 Stranglethorn Vale ---
-	if (IsQuestFlaggedCompleted(1178) and not IsQuestFlaggedCompleted(1457)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1178) and not C_QuestLog.IsQuestFlaggedCompleted(1457)) then
 		AAPClassic.QH.ZoneNr = "36-37StranglethornVale"
 	end
 	--- 37 AlteracMountains ---
-	if (IsQuestFlaggedCompleted(1457) and not IsQuestFlaggedCompleted(690)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1457) and not C_QuestLog.IsQuestFlaggedCompleted(690)) then
 		AAPClassic.QH.ZoneNr = "37-AlteracMountains"
 	end
 	--- 37-38 ArathiHighlands ---
-	if (IsQuestFlaggedCompleted(690) and not IsQuestFlaggedCompleted(1260)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(690) and not C_QuestLog.IsQuestFlaggedCompleted(1260)) then
 		AAPClassic.QH.ZoneNr = "37-38ArathiHighlands"
 	end
 	--- 38-39 DustwallowMarsh ---
-	if (IsQuestFlaggedCompleted(1260) and not IsQuestFlaggedCompleted(1115)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1260) and not C_QuestLog.IsQuestFlaggedCompleted(1115)) then
 		AAPClassic.QH.ZoneNr = "38-39DustwallowMarsh"
 	end
 	--- 39-40 StranglethornVale ---
-	if (IsQuestFlaggedCompleted(1115)) then
+	if (C_QuestLog.IsQuestFlaggedCompleted(1115)) then
 		AAPClassic.QH.ZoneNr = "39-40StranglethornVale"
 	end
-	
-	
-	
+
+
+
 
 	if (AAPClassic.ExploreEnable == "on") then
 		if (AAPClassic.Race == "Human") then
@@ -421,7 +419,7 @@ function AAPClassic.QH.UpdateMapIdAlly()
 			AAPClassic.QH.ZoneNr = "1-5Explorer2"
 		end
 	end
-	if (AAPClassic.QuestHelperEnable == "on") then	
+	if (AAPClassic.QuestHelperEnable == "on") then
 		AAPClassic.QH.ZoneNr = "QuestHelper"
 	end
 	if (OldMapID ~= AAPClassic.QH.ZoneNr) then
@@ -432,7 +430,7 @@ function AAPClassic.QH.UpdateMapIdAlly()
 		if (not AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]) then
 			AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr] = 1
 		end
-		if (AAPClassic.QuestHelperEnable == "on") then	
+		if (AAPClassic.QuestHelperEnable == "on") then
 			AAPClassic.QH.ZoneNr = "QuestHelper"
 		end
 	end
@@ -479,7 +477,7 @@ function AAPClassic.QH.REprintzQuestList()
 						end
 					end
 				end
-				
+
 			end
 		end
 		i = i + 1
@@ -569,7 +567,7 @@ function AAPClassic.QH.FunctionLoop()
 		elseif (AAPClassic.Path[AAPClassic.QH.ZoneNr][CurStep]["UpdMapID"]) then
 			AAPClassic.QH.BookingList.UpdateMapId = 1
 		end
-		
+
 	end
 end
 function AAPClassic.QH.QHQueFunction()
@@ -904,7 +902,7 @@ function AAPClassic.QH.UpdateQuestList()
 							end
 							AAPClassic.ShowedDB[TQid][h] = nil
 						end
-						
+
 						AAPClassic.QH.FuncLoopNumber = 1
 					end
 				end
@@ -968,9 +966,9 @@ function AAPClassic.QH.UpdateQuestList2()
 						AAPClassic.QuestList[TQid]["Objectives"][h]["isComplete"] = finished
 					elseif (AAPClassic.QuestList[TQid]["Objectives"][h]["isComplete"] ~= finished) then
 						AAPClassic.QuestList[TQid]["Objectives"][h]["isComplete"] = finished
-						
+
 						--AAPClassic.ShowedDB[TQid][h]
-						
+
 						AAPClassic.QH.FuncLoopNumber = 1
 					end
 				end
@@ -1080,7 +1078,7 @@ function AAPClassic.CheckNamePlate()
 				AAP_frame.AAPIcon:Hide()
 			end
 		end
-		
+
 	--	if (AAP_frame:GetName() and AAP_frame:GetName():find("NamePlate%d")) then
 	--		local loweredd = strlower(AAP_frame:GetName())
 	--		local zemobid = AAPClassic.CheckNamePlates[loweredd]
@@ -1181,7 +1179,7 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 			--print("-------------------")
 			AAPClassic.QH.BookingList.UpdateQuestList = 1
 		end
-		
+
 	elseif (event=="PLAYER_TARGET_CHANGED") then
 		if (AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"] and AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]) then
 			local CurStep = AAPC1[AAPClassic.Realm][AAPClassic.Name]["Zones"][AAPClassic.QH.ZoneNr]
@@ -1312,7 +1310,7 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 			--print("AAP - QUEST_COMPLETE - NrChoices: "..GetNumQuestChoices())
 			for h=1, GetNumQuestChoices() do
 				local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount,
-				itemEquipLoc, itemIcon, itemSellPrice, itemClassID, itemSubClassID, bindType, expacID, itemSetID, 
+				itemEquipLoc, itemIcon, itemSellPrice, itemClassID, itemSubClassID, bindType, expacID, itemSetID,
 				isCraftingReagent = GetItemInfo(GetQuestItemLink("choice", h))
 				local ilvl = GetDetailedItemLevelInfo(GetQuestItemLink("choice", h))
 				--print("AAP ("..h..") - Item: "..itemLink.." ilvl:"..ilvl)
@@ -1339,7 +1337,7 @@ AAPClassic.QH.EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 			if (lastAvailableQuest > numAvailableQuests) then
 				lastAvailableQuest = 1;
-			end    
+			end
 			for i = lastAvailableQuest, numAvailableQuests do
 				lastAvailableQuest = i;
 				if (not IsControlKeyDown()) then

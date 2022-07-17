@@ -1737,7 +1737,7 @@ function AAPClassic.AddQuestPickUpIconFunc()
 	local IdList = Step["PickUp"]
 	for h=1, getn(IdList) do
 		local theqid = IdList[h]
-		if (not AAPClassic.QuestList[theqid] and IsQuestFlaggedCompleted(theqid) == false) then
+		if (not AAPClassic.QuestList[theqid] and C_QuestLog.IsQuestFlaggedCompleted(theqid) == false) then
 			local px, py = AAPClassic.GetPlayerMapPos(mz, Step["TT"]["y"], Step["TT"]["x"])
 			AAPClassic.AddQuestPickUpIcon(mz, px, py)
 		end
@@ -1751,7 +1751,7 @@ function AAPClassic.AddQuestHandinIconFunc()
 	if (IdList) then
 	for h=1, getn(IdList) do
 		local theqid = IdList[h]
-		if (IsQuestFlaggedCompleted(theqid) == false) then
+		if (C_QuestLog.IsQuestFlaggedCompleted(theqid) == false) then
 			local Ys, Xs
 			if (Step and Step["TT"] and Step["TT"]["y"]) then
 				Ys = Step["TT"]["y"]

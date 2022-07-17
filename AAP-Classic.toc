@@ -3,7 +3,7 @@
 ## Title: Azeroth Auto Pilot <Classic> 1-60
 ## Notes: AAP Classic
 ## Author: Zyrrael
-## Version: 0.12
+## Version: 0.13
 ## SavedVariables: AAPC1, AAPC2, AAPC3, AAPCQuestNames, AAPC_HoldZoneVar
 lib\LibStub\LibStub.lua
 lib\CallbackHandler-1.0\CallbackHandler-1.0.xml

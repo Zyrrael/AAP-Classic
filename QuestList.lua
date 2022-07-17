@@ -8,7 +8,7 @@ function AAPClassic.MakeQuestList()
 
 
 	AAPClassic.GroupQuestFrame = {}
-	AAPClassic.GroupQuestFrame = CreateFrame("frame", "AAP_SugQuestFrameFrame", UIParent)
+	AAPClassic.GroupQuestFrame = CreateFrame("frame", "AAP_SugQuestFrameFrame", UIParent, "BackdropTemplate")
 	AAPClassic.GroupQuestFrame:SetWidth(300)
 	AAPClassic.GroupQuestFrame:SetHeight(150)
 	AAPClassic.GroupQuestFrame:SetMovable(true)
@@ -16,10 +16,10 @@ function AAPClassic.MakeQuestList()
 	AAPClassic.GroupQuestFrame:SetFrameStrata("LOW")
 	AAPClassic.GroupQuestFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 	AAPClassic.GroupQuestFrame:SetBackdrop( { 
-			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", 
+			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", 61,
 			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		});
+	} )
 	AAPClassic.GroupQuestFrame:SetScript("OnMouseDown", function(self, button)
 		if button == "LeftButton" then
 			AAPClassic.GroupQuestFrame:StartMoving();
@@ -114,7 +114,7 @@ function AAPClassic.MakeQuestList()
 
 
 
-	AAPClassic.QL.MainFrame = CreateFrame("frame", "AAPClassic_QL_QButtonMi_MainFrame", UIParent)
+	AAPClassic.QL.MainFrame = CreateFrame("frame", "AAPClassic_QL_QButtonMi_MainFrame", UIParent, "BackdropTemplate")
 	AAPClassic.QL.MainFrame:SetWidth(1)
 	AAPClassic.QL.MainFrame:SetHeight(1)
 	AAPClassic.QL.MainFrame:SetMovable(true)
@@ -122,7 +122,7 @@ function AAPClassic.MakeQuestList()
 	AAPClassic.QL.MainFrame:SetFrameStrata("MEDIUM")
 	AAPClassic.QL.MainFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 1, 1)
 
-	AAPClassic.QL.QButtonFrame = CreateFrame("frame", "AAPClassic_QL_QButton_ListFrame", UIParent)
+	AAPClassic.QL.QButtonFrame = CreateFrame("frame", "AAPClassic_QL_QButton_ListFrame", UIParent, "BackdropTemplate")
 	AAPClassic.QL.QButtonFrame:SetWidth(55)
 	AAPClassic.QL.QButtonFrame:SetHeight(55)
 	AAPClassic.QL.QButtonFrame:SetFrameStrata("MEDIUM")
@@ -147,40 +147,41 @@ function AAPClassic.MakeQuestList()
 			AAPClassic.QL.QButtonFrame.isMoving = false;
 		end
 	end)
+	
 	AAPClassic.QL.QButtonFrame:SetBackdrop( { 
 			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", 
 			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 		});
-
-		AAPClassic.QL.QButtonFrame["Button"] = CreateFrame("Button", "AAPClassic_QL_QButtonFrame_Button", AAPClassic.QL.QButtonFrame, "SecureActionButtonTemplate")
-		AAPClassic.QL.QButtonFrame["Button"]:SetWidth(37)
-		AAPClassic.QL.QButtonFrame["Button"]:SetHeight(37)
-		AAPClassic.QL.QButtonFrame["Button"]:SetText("X")
-		AAPClassic.QL.QButtonFrame["Button"]:SetPoint("CENTER",AAPClassic.QL.QButtonFrame,"CENTER",0,0)
-		AAPClassic.QL.QButtonFrame["Button"]:SetNormalFontObject("GameFontNormalLarge")
-		AAPClassic.QL.QButtonFrame["Buttonntex"] = AAPClassic.QL.QButtonFrame["Button"]:CreateTexture()
-		AAPClassic.QL.QButtonFrame["Buttonntex"]:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
-		AAPClassic.QL.QButtonFrame["Buttonntex"]:SetTexCoord(0, 0.625, 0, 0.6875)
-		AAPClassic.QL.QButtonFrame["Buttonntex"]:SetAllPoints()	
-		AAPClassic.QL.QButtonFrame["Button"]:SetNormalTexture("Interface/Buttons/UI-Panel-Button-Highlight")
-		AAPClassic.QL.QButtonFrame["Buttonhtex"] = AAPClassic.QL.QButtonFrame["Button"]:CreateTexture()
-		AAPClassic.QL.QButtonFrame["Buttonhtex"]:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
-		AAPClassic.QL.QButtonFrame["Buttonhtex"]:SetTexCoord(0, 0.625, 0, 0.6875)
-		AAPClassic.QL.QButtonFrame["Buttonhtex"]:SetAllPoints()
-		AAPClassic.QL.QButtonFrame["Button"]:SetHighlightTexture(AAPClassic.QL.QButtonFrame["Buttonhtex"])
-		AAPClassic.QL.QButtonFrame["Buttonptex"] = AAPClassic.QL.QButtonFrame["Button"]:CreateTexture()
-		AAPClassic.QL.QButtonFrame["Buttonptex"]:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
-		AAPClassic.QL.QButtonFrame["Buttonptex"]:SetTexCoord(0, 0.625, 0, 0.6875)
-		AAPClassic.QL.QButtonFrame["Buttonptex"]:SetAllPoints()
-		AAPClassic.QL.QButtonFrame["Button"]:SetPushedTexture(AAPClassic.QL.QButtonFrame["Buttonptex"])
-		AAPClassic.QL.QButtonFrame["ButtonCD"] = CreateFrame("Cooldown", "AAPClassic_QL_QButtonFrame_ButtonCooldown", AAPClassic.QL.QButtonFrame["Button"], "CooldownFrameTemplate")
-		AAPClassic.QL.QButtonFrame["ButtonCD"]:SetAllPoints()
+	
+	AAPClassic.QL.QButtonFrame["Button"] = CreateFrame("Button", "AAPClassic_QL_QButtonFrame_Button", AAPClassic.QL.QButtonFrame, "SecureActionButtonTemplate")
+	AAPClassic.QL.QButtonFrame["Button"]:SetWidth(37)
+	AAPClassic.QL.QButtonFrame["Button"]:SetHeight(37)
+	AAPClassic.QL.QButtonFrame["Button"]:SetText("X")
+	AAPClassic.QL.QButtonFrame["Button"]:SetPoint("CENTER",AAPClassic.QL.QButtonFrame,"CENTER",0,0)
+	AAPClassic.QL.QButtonFrame["Button"]:SetNormalFontObject("GameFontNormalLarge")
+	AAPClassic.QL.QButtonFrame["Buttonntex"] = AAPClassic.QL.QButtonFrame["Button"]:CreateTexture()
+	AAPClassic.QL.QButtonFrame["Buttonntex"]:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
+	AAPClassic.QL.QButtonFrame["Buttonntex"]:SetTexCoord(0, 0.625, 0, 0.6875)
+	AAPClassic.QL.QButtonFrame["Buttonntex"]:SetAllPoints()	
+	AAPClassic.QL.QButtonFrame["Button"]:SetNormalTexture("Interface/Buttons/UI-Panel-Button-Highlight")
+	AAPClassic.QL.QButtonFrame["Buttonhtex"] = AAPClassic.QL.QButtonFrame["Button"]:CreateTexture()
+	AAPClassic.QL.QButtonFrame["Buttonhtex"]:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
+	AAPClassic.QL.QButtonFrame["Buttonhtex"]:SetTexCoord(0, 0.625, 0, 0.6875)
+	AAPClassic.QL.QButtonFrame["Buttonhtex"]:SetAllPoints()
+	AAPClassic.QL.QButtonFrame["Button"]:SetHighlightTexture(AAPClassic.QL.QButtonFrame["Buttonhtex"])
+	AAPClassic.QL.QButtonFrame["Buttonptex"] = AAPClassic.QL.QButtonFrame["Button"]:CreateTexture()
+	AAPClassic.QL.QButtonFrame["Buttonptex"]:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
+	AAPClassic.QL.QButtonFrame["Buttonptex"]:SetTexCoord(0, 0.625, 0, 0.6875)
+	AAPClassic.QL.QButtonFrame["Buttonptex"]:SetAllPoints()
+	AAPClassic.QL.QButtonFrame["Button"]:SetPushedTexture(AAPClassic.QL.QButtonFrame["Buttonptex"])
+	AAPClassic.QL.QButtonFrame["ButtonCD"] = CreateFrame("Cooldown", "AAPClassic_QL_QButtonFrame_ButtonCooldown", AAPClassic.QL.QButtonFrame["Button"], "CooldownFrameTemplate")
+	AAPClassic.QL.QButtonFrame["ButtonCD"]:SetAllPoints()
 	AAPClassic.QL.QButtonFrame:Hide()
 
 
 
-	AAPClassic.QL.ListFrame = CreateFrame("frame", "AAPClassic_QL_QuestList_ListFrame", UIParent)
+	AAPClassic.QL.ListFrame = CreateFrame("frame", "AAPClassic_QL_QuestList_ListFrame", UIParent, "BackdropTemplate")
 	AAPClassic.QL.ListFrame:SetWidth(1)
 	AAPClassic.QL.ListFrame:SetHeight(1)
 	AAPClassic.QL.ListFrame:SetFrameStrata("MEDIUM")
@@ -208,12 +209,12 @@ function AAPClassic.MakeQuestList()
 	AAPClassic.QL.QuestFrames = {}
 	local CLi
 	for CLi = 1, 20 do
-		AAPClassic.QL.QuestFrames[CLi] = CreateFrame("frame", "AAPClassic_QL_QuestFrames"..CLi, AAPClassic.QL.ListFrame)
+		AAPClassic.QL.QuestFrames[CLi] = CreateFrame("frame", "AAPClassic_QL_QuestFrames"..CLi, UIParent, "BackdropTemplate" or AAPClassic.QL.ListFrame)
 		AAPClassic.QL.QuestFrames[CLi]:SetWidth(250)
 
 		AAPClassic.QL.QuestFrames[CLi]:SetHeight(20)
 		AAPClassic.QL.QuestFrames[CLi]:SetPoint("BOTTOMLEFT", AAPClassic.QL.ListFrame, "BOTTOMLEFT",0,-((CLi * 20)+CLi))
-		AAPClassic.QL.QuestFrames[CLi]:SetBackdrop( { 
+			AAPClassic.QL.QuestFrames[CLi]:SetBackdrop( { 
 			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", 
 			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
