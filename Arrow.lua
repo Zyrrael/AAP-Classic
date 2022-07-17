@@ -47,7 +47,7 @@ AAPClassic.ArrowFrame:SetScript("OnHide", function(self)
 	end
 end)
 
-AAPClassic.ArrowFrame.Button = CreateFrame("Button", "AAPClassic_ArrowFrame_Button", AAP_ArrowFrame)
+AAPClassic.ArrowFrame.Button = CreateFrame("Button", "AAPClassic_ArrowFrame_Button", AAP_ArrowFrame, "BackdropTemplate")
 AAPClassic.ArrowFrame.Button:SetWidth(85)
 AAPClassic.ArrowFrame.Button:SetHeight(17)
 AAPClassic.ArrowFrame.Button:SetParent(AAPClassic.ArrowFrame)
@@ -58,12 +58,12 @@ AAPClassic.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
 	AAPClassic.QH.FuncLoopNumber = 1
 end)
 
---[[AAPClassic.ArrowFrame.Button:SetBackdrop( { 
+AAPClassic.ArrowFrame.Button:SetBackdrop( { 
 	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", 
 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 });
-]]
+
 AAPClassic.ArrowFrame.Fontstring = AAPClassic.ArrowFrame:CreateFontString("AAPClassic_ArrowFrame_Fontstring ","ARTWORK", "ChatFontNormal")
 AAPClassic.ArrowFrame.Fontstring:SetParent(AAPClassic.ArrowFrame.Button)
 AAPClassic.ArrowFrame.Fontstring:SetPoint("CENTER", AAPClassic.ArrowFrame.Button, "CENTER", 0, 0)
